@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">比较两个数大小</string>
+    <string name="num1">第一个数</string>
+    <string name="num2">第二个数</string>
+    <string name="enter1" >请输入第一个数</string>
+    <string name="enter2">请输入第二个数</string>
+    <string name="judge">判断</string>
+</resources>
