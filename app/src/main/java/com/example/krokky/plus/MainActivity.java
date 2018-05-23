@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         myServiceConnection = new MyServiceConnection();
 
         //绑定一个服务，以便调用服务内的方法
-        isBind = getApplicationContext().bindService(myService,myServiceConnection, Service.BIND_AUTO_CREATE);
+        isBind = getApplicationContext().bindService(myService, myServiceConnection, Service.BIND_AUTO_CREATE);
 
         ed = findViewById(R.id.editText);
         ed2 = findViewById(R.id.editText2);
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         //退出Activity时要解除绑定
-        if (isBind && myServiceConnection != null){
+        if (isBind && myServiceConnection != null) {
             getApplicationContext().unbindService(myServiceConnection);
         }
         super.onDestroy();
@@ -67,10 +67,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                Toast.makeText(
-                        MainActivity.this,
-                        "较大的数是" + myBinder.compare(ed.getText().toString(),
-                                ed2.getText().toString()), Toast.LENGTH_LONG).show();
+                if (ed.getText().toString().equals("") || ed2.getText().toString().equals(""))
+                    Toast.makeText(MainActivity.this, "请输入需要比较的数字", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(
+                            MainActivity.this,
+                            "较大的数是" + myBinder.compare(ed.getText().toString(),
+                                    ed2.getText().toString()), Toast.LENGTH_LONG).show();
+                }
                 break;
             default:
                 break;
